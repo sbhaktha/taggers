@@ -1,5 +1,5 @@
 angular.module('taggers', ['ui.bootstrap']);
-var TaggersCtrl = function($scope, $http) {
+taggers.controller('TaggersCtrl', function($scope, $http) {
   $scope.taggersModel = { };
 
   $http.get('/fields').then(function(response) {
@@ -54,4 +54,4 @@ var TaggersCtrl = function($scope, $http) {
       end: 0
     }
   }
-}
+})
