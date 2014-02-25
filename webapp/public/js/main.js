@@ -1,6 +1,6 @@
 angular.module('taggers', ['ui.bootstrap']);
 var TaggersCtrl = function($scope, $http) {
-  $scope.taggersModel = { }
+  $scope.taggersModel = { };
 
   $http.get('/fields').then(function(response) {
     $scope.taggersModel = response.data;
@@ -12,7 +12,7 @@ var TaggersCtrl = function($scope, $http) {
     $scope.taggersModel.taggers = ">>> Level 1\n\nAnimal := LemmatizedKeywordTagger {\n  cat\n  bird\n  frog\n}" + "\n\n" +
       "DescribedAnimal := TypePatternTagger ( <pos='JJ'>+ @Animal )";
 
-    $scope.submit()
+    $scope.submit();
   }
 
   $scope.submit = function() {
@@ -21,7 +21,7 @@ var TaggersCtrl = function($scope, $http) {
       .success(function(data, status, headers, config) {
         $scope.working = false;
 
-        $scope.errorResponse = undefined
+        $scope.errorResponse = undefined;
         $scope.response = data;
 
         $scope.sentence = data.sentences[0];
@@ -29,15 +29,15 @@ var TaggersCtrl = function($scope, $http) {
         $scope.highlightedInterval = {
           start: 0,
           end: 0
-        }
+        };
         $scope.responseString = angular.toJson(data, pretty=true);
       })
       .error(function(data, status, headers, config) {
         $scope.working = false;
 
-        $scope.response = undefined
-        $scope.errorResponse = data
-        $scope.errorResponse.status = status
+        $scope.response = undefined;
+        $scope.errorResponse = data;
+        $scope.errorResponse.status = status;
       })
   }
 
